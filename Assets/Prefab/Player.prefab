@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2798011736436075190}
   - component: {fileID: 2798011736436074825}
   - component: {fileID: -6717573019000374055}
+  - component: {fileID: 8402908916827516773}
   - component: {fileID: -7914733139716819800}
   - component: {fileID: 3861710822355242554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
+  clientAuthority: 1
   sendInterval: 0.05
   syncPosition: 1
   syncRotation: 1
@@ -153,7 +154,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  speed: 50
+  speed: 25
+  jumpForce: 15
+--- !u!114 &8402908916827516773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798011736436074826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88acfc9d9e9c734b86be67f80281dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  HostPrefab: {fileID: 6796596088811014763, guid: 957697580237aa048abb97ab852021e5, type: 3}
 --- !u!50 &-7914733139716819800
 Rigidbody2D:
   serializedVersion: 4
@@ -166,10 +183,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 25
+  m_AngularDrag: 0
+  m_GravityScale: 15
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

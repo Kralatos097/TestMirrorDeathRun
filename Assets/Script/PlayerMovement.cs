@@ -7,10 +7,10 @@ using UnityEngine;
 public class PlayerMovement : NetworkBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
     
     private Rigidbody2D _rb;
-    //private Vector2 _nextPos;
-    private Vector2 _horizontalMove;
+    private bool _isGrounded = true;
 
     private void Start()
     {
@@ -26,22 +26,45 @@ public class PlayerMovement : NetworkBehaviour
             var camera = transform.Find("Main Camera");
             camera.GetComponent<Camera>().enabled = false;
             camera.GetComponent<AudioListener>().enabled = false;
-            //I also disabled this component so it also doesn't move the other player
-            enabled = false;
         }
+    }
+
+    [ClientRpc]
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        _horizontalMove = Vector2.right * (Input.GetAxis("Horizontal") * speed/100);
-        
+        if(!isLocalPlayer || isServer) return;
+        /*Vector2 horizontalMove = Vector2.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+        _rb.MovePosition(_rb.position + horizontalMove);*/
         /*float horizontalMove = Input.GetAxis("Horizontal") * speed;
-        _rb.velocity = Vector2.right*horizontalMove; */
+        _rb.velocity = Vector2.right*horizontalMove;*/
+        var horizontalInput = Input.GetAxisRaw("Horizontal");
+        _rb.velocity = new Vector2(horizontalInput * speed, _rb.velocity.y);
+        
+        if(Input.GetButtonDown("Jump") && _isGrounded)
+        {
+            Debug.Log("Jump");
+            _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _isGrounded = false;
+        }
     }
 
-    private void FixedUpdate()
+    public void Death()
     {
-        _rb.MovePosition(_rb.position + _horizontalMove);
+        Debug.Log("RIP");
+        Application.Quit();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Sol"))
+        {
+            _isGrounded = true;
+        }
     }
 }

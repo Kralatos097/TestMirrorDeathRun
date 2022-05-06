@@ -5,15 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Map
+  - piege
+  - Sol
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Sol
   - Water
   - UI
-  - 
-  - 
+  - Trap
+  - Player
   - 
   - 
   - 
