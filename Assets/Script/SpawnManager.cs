@@ -11,7 +11,7 @@ public class SpawnManager : NetworkBehaviour
     {
         base.OnStartClient();
 
-        if(isServer)
+        if(isServer && isLocalPlayer)
         {
             zzzzzzz();
         }
