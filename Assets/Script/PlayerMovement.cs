@@ -53,11 +53,16 @@ public class PlayerMovement : NetworkBehaviour
             _isGrounded = false;
         }
     }
-
+    
+    [ClientRpc]
     public void Death()
     {
-        Debug.Log("RIP");
-        Application.Quit();
+        if (isLocalPlayer)
+        {
+            Debug.Log("RIP");
+            DestroySelf();
+            Application.Quit();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

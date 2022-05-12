@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6355226974594743422}
   - component: {fileID: 6355226974594743421}
   m_Layer: 5
-  m_Name: Activate Trap (1)
+  m_Name: piege1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,12 +32,12 @@ RectTransform:
   m_Children:
   - {fileID: 6355226975722785302}
   m_Father: {fileID: 6355226976041582737}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1437.5001, y: -53.98915}
-  m_SizeDelta: {x: 945.00006, y: 107.9783}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6355226974594743423
 CanvasRenderer:
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: piege 2
 --- !u!1 &6355226975457252232
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,12 +344,12 @@ RectTransform:
   m_Children:
   - {fileID: 6355226975261154298}
   m_Father: {fileID: 6355226976041582737}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.50003, y: -53.98915}
-  m_SizeDelta: {x: 945.00006, y: 107.9783}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6355226975457252276
 CanvasRenderer:
@@ -523,7 +523,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: piege 1
 --- !u!1 &6355226976041582736
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,8 +554,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6355226975457252233}
   - {fileID: 6355226974594743420}
+  - {fileID: 6355226975457252233}
   m_Father: {fileID: 6355226975117080214}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
