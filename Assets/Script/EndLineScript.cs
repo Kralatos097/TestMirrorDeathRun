@@ -29,12 +29,11 @@ public class EndLineScript : NetworkBehaviour
     [ClientRpc]
     private void DisplayCanvas()
     {
-        GameObject canvasInst = Instantiate(VictoryCanvas);
-        NetworkServer.Spawn(canvasInst);
+        Instantiate(VictoryCanvas);
     }
 
     private void StopServ()
     {
-        //NetworkServer.Shutdown();
+        NetworkServer.Shutdown();
     }
 }

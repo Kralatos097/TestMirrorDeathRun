@@ -42,6 +42,7 @@ public class SpawnManager : NetworkBehaviour
     {
         HostInst.GetComponent<Camera>().enabled = true;
         HostInst.GetComponent<AudioListener>().enabled = true;
+        HostInst.GetComponentInChildren<SpriteMask>().enabled = true;
     }
 
     [Command]

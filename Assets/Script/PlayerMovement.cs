@@ -31,6 +31,7 @@ public class PlayerMovement : NetworkBehaviour
             var camera = transform.Find("Main Camera");
             camera.GetComponent<Camera>().enabled = false;
             camera.GetComponent<AudioListener>().enabled = false;
+            transform.GetComponentInChildren<SpriteMask>().gameObject.SetActive(false);
         }
     }
 
