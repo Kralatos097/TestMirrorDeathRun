@@ -8,6 +8,7 @@ public class SpawnManager : NetworkBehaviour
     [SerializeField] private GameObject HostPrefab;
     
     private GameObject TraperCanvas;
+    private static GameObject HostInst;
     
     public override void OnStartClient()
     {
@@ -23,13 +24,36 @@ public class SpawnManager : NetworkBehaviour
         {
             //détruit les objets non nécéssaire aux client
             Destroy(TraperCanvas);
+            CRandomColor();
         }
-        Destroy(this);
     }
     
+    [Server]
     private void SpawnHost()
     {
-        Instantiate(HostPrefab);
+        HostInst = Instantiate(HostPrefab);
+        NetworkServer.Spawn(HostInst);
+        TraperCanvas.GetComponent<Canvas>().enabled = true;
         Destroy(gameObject);
+        ActivateHost();
+    }
+    
+    private void ActivateHost()
+    {
+        HostInst.GetComponent<Camera>().enabled = true;
+        HostInst.GetComponent<AudioListener>().enabled = true;
+    }
+
+    [Command]
+    private void CRandomColor()
+    {
+        Color color = Random.ColorHSV();
+        RandomColor(color);
+    }
+
+    [ClientRpc]
+    private void RandomColor(Color color)
+    {
+        GetComponent<Renderer>().material.color = color;
     }
 }

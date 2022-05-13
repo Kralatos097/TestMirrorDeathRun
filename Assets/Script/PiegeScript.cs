@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class PiegeScript : NetworkBehaviour
 {
+    private static List<PiegeScript> _piegeList;
+
+    private void Start()
+    {
+        _piegeList ??= new List<PiegeScript>();
+        _piegeList.Add(this);
+    }
+
     [ClientRpc]
     public /*virtual*/ void ActivateTrap()
     {
@@ -25,6 +33,14 @@ public class PiegeScript : NetworkBehaviour
         if(other.CompareTag("Player"))
         {
             other.GetComponent<PlayerMovement>().Death();
+        }
+    }
+
+    public static void DeactivateTraps()
+    {
+        foreach (PiegeScript piege in _piegeList)
+        {
+            piege.enabled = false;
         }
     }
 }

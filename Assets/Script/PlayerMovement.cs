@@ -11,10 +11,15 @@ public class PlayerMovement : NetworkBehaviour
     
     private Rigidbody2D _rb;
     private bool _isGrounded = true;
+    
+    private static List<PlayerMovement> _playerList;
 
     private void Start()
     {
+        _playerList ??= new List<PlayerMovement>();
+        
         _rb = GetComponent<Rigidbody2D>();
+        _playerList.Add(this);
     }
 
     public override void OnStartClient()
@@ -29,6 +34,12 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
+    [Command]
+    private void CDestroySelf()
+    {
+        DestroySelf();
+    }
+    
     [ClientRpc]
     private void DestroySelf()
     {
@@ -54,13 +65,12 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
     
-    [ClientRpc]
     public void Death()
     {
         if (isLocalPlayer)
         {
             Debug.Log("RIP");
-            DestroySelf();
+            CDestroySelf();
             Application.Quit();
         }
     }
@@ -70,6 +80,14 @@ public class PlayerMovement : NetworkBehaviour
         if (other.gameObject.CompareTag("Sol"))
         {
             _isGrounded = true;
+        }
+    }
+
+    public static void DeactivatePlayers()
+    {
+        foreach (PlayerMovement player in _playerList)
+        {
+            player.enabled = false;
         }
     }
 }
