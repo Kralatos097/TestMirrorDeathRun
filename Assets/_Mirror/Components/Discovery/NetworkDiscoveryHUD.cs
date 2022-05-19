@@ -58,12 +58,12 @@ namespace Mirror.Discovery
             }
 
             // Dedicated server
-            /*if (GUILayout.Button("Start Server"))
+            if (GUILayout.Button("Start Server"))
             {
                 discoveredServers.Clear();
                 NetworkManager.singleton.StartServer();
                 networkDiscovery.AdvertiseServer();
-            }*/
+            }
 
             GUILayout.EndHorizontal();
 

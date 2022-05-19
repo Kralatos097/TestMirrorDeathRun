@@ -72,6 +72,7 @@ public class PlayerMovement : NetworkBehaviour
         {
             Debug.Log("RIP");
             CDestroySelf();
+            NetworkManager.singleton.StopClient();
             Application.Quit();
         }
     }
