@@ -48,7 +48,7 @@ public class SpawnManager : NetworkBehaviour
     [Command]
     private void CRandomColor()
     {
-        Color color = Random.ColorHSV();
+        Color color = Random.ColorHSV(0, 1,0.7f,0.7f,1,1);
         RandomColor(color);
     }
 
