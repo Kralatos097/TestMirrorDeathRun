@@ -196,5 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2959c02a618ad1b4d9f7d2616ec1f487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
+  syncMode: 1
   syncInterval: 0.1
+  VictoryCanvas: {fileID: 8443512312381408199, guid: fbf2b21654aa80a49aa6ac0cbf6a14c1, type: 3}

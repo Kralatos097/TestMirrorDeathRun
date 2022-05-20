@@ -34,7 +34,7 @@ public class SpawnManager : NetworkBehaviour
         HostInst = Instantiate(HostPrefab);
         NetworkServer.Spawn(HostInst);
         TraperCanvas.GetComponent<Canvas>().enabled = true;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         ActivateHost();
     }
     

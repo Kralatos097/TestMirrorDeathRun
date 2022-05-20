@@ -17,9 +17,9 @@ public class PlayerMovement : NetworkBehaviour
     private void Start()
     {
         _playerList ??= new List<PlayerMovement>();
+        _playerList.Add(this);
         
         _rb = GetComponent<Rigidbody2D>();
-        _playerList.Add(this);
     }
 
     public override void OnStartClient()
@@ -68,12 +68,11 @@ public class PlayerMovement : NetworkBehaviour
     
     public void Death()
     {
-        if (isLocalPlayer)
+        if(isLocalPlayer)
         {
             Debug.Log("RIP");
             CDestroySelf();
             NetworkManager.singleton.StopClient();
-            Application.Quit();
         }
     }
 
